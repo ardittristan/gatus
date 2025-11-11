@@ -1,0 +1,2810 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/TwiN/gatus/v5/config/config",
+  "$ref": "#/$defs/Config",
+  "$defs": {
+    "Config": {
+      "properties": {
+        "debug": {
+          "type": "boolean"
+        },
+        "metrics": {
+          "type": "boolean"
+        },
+        "skip-invalid-config-update": {
+          "type": "boolean"
+        },
+        "disable-monitoring-lock": {
+          "type": "boolean"
+        },
+        "concurrency": {
+          "type": "integer"
+        },
+        "security": {
+          "$ref": "#/$defs/security_Config"
+        },
+        "alerting": {
+          "$ref": "#/$defs/alerting_Config"
+        },
+        "endpoints": {
+          "items": {
+            "$ref": "#/$defs/config_endpoint_Endpoint"
+          },
+          "type": "array"
+        },
+        "external-endpoints": {
+          "items": {
+            "$ref": "#/$defs/config_endpoint_ExternalEndpoint"
+          },
+          "type": "array"
+        },
+        "suites": {
+          "items": {
+            "$ref": "#/$defs/config_suite_Suite"
+          },
+          "type": "array"
+        },
+        "storage": {
+          "$ref": "#/$defs/storage_Config"
+        },
+        "web": {
+          "$ref": "#/$defs/config_web_Config"
+        },
+        "ui": {
+          "$ref": "#/$defs/config_ui_Config"
+        },
+        "maintenance": {
+          "$ref": "#/$defs/config_maintenance_Config"
+        },
+        "remote": {
+          "$ref": "#/$defs/config_remote_Config"
+        },
+        "connectivity": {
+          "$ref": "#/$defs/config_connectivity_Config"
+        },
+        "tunneling": {
+          "$ref": "#/$defs/config_tunneling_Config"
+        },
+        "announcements": {
+          "items": {
+            "$ref": "#/$defs/config_announcement_Announcement"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "alerting_Config": {
+      "properties": {
+        "aws-ses": {
+          "$ref": "#/$defs/alerting_provider_awsses_AlertProvider"
+        },
+        "custom": {
+          "$ref": "#/$defs/alerting_provider_custom_AlertProvider"
+        },
+        "datadog": {
+          "$ref": "#/$defs/alerting_provider_datadog_AlertProvider"
+        },
+        "discord": {
+          "$ref": "#/$defs/alerting_provider_discord_AlertProvider"
+        },
+        "email": {
+          "$ref": "#/$defs/alerting_provider_email_AlertProvider"
+        },
+        "github": {
+          "$ref": "#/$defs/alerting_provider_github_AlertProvider"
+        },
+        "gitlab": {
+          "$ref": "#/$defs/alerting_provider_gitlab_AlertProvider"
+        },
+        "gitea": {
+          "$ref": "#/$defs/alerting_provider_gitea_AlertProvider"
+        },
+        "googlechat": {
+          "$ref": "#/$defs/alerting_provider_googlechat_AlertProvider"
+        },
+        "gotify": {
+          "$ref": "#/$defs/alerting_provider_gotify_AlertProvider"
+        },
+        "homeassistant": {
+          "$ref": "#/$defs/alerting_provider_homeassistant_AlertProvider"
+        },
+        "ifttt": {
+          "$ref": "#/$defs/alerting_provider_ifttt_AlertProvider"
+        },
+        "ilert": {
+          "$ref": "#/$defs/alerting_provider_ilert_AlertProvider"
+        },
+        "incident-io": {
+          "$ref": "#/$defs/alerting_provider_incidentio_AlertProvider"
+        },
+        "line": {
+          "$ref": "#/$defs/alerting_provider_line_AlertProvider"
+        },
+        "matrix": {
+          "$ref": "#/$defs/alerting_provider_matrix_AlertProvider"
+        },
+        "mattermost": {
+          "$ref": "#/$defs/alerting_provider_mattermost_AlertProvider"
+        },
+        "messagebird": {
+          "$ref": "#/$defs/alerting_provider_messagebird_AlertProvider"
+        },
+        "newrelic": {
+          "$ref": "#/$defs/alerting_provider_newrelic_AlertProvider"
+        },
+        "n8n": {
+          "$ref": "#/$defs/alerting_provider_n8n_AlertProvider"
+        },
+        "ntfy": {
+          "$ref": "#/$defs/alerting_provider_ntfy_AlertProvider"
+        },
+        "opsgenie": {
+          "$ref": "#/$defs/alerting_provider_opsgenie_AlertProvider"
+        },
+        "pagerduty": {
+          "$ref": "#/$defs/alerting_provider_pagerduty_AlertProvider"
+        },
+        "plivo": {
+          "$ref": "#/$defs/alerting_provider_plivo_AlertProvider"
+        },
+        "pushover": {
+          "$ref": "#/$defs/alerting_provider_pushover_AlertProvider"
+        },
+        "rocketchat": {
+          "$ref": "#/$defs/alerting_provider_rocketchat_AlertProvider"
+        },
+        "sendgrid": {
+          "$ref": "#/$defs/alerting_provider_sendgrid_AlertProvider"
+        },
+        "signal": {
+          "$ref": "#/$defs/alerting_provider_signal_AlertProvider"
+        },
+        "signl4": {
+          "$ref": "#/$defs/alerting_provider_signl4_AlertProvider"
+        },
+        "slack": {
+          "$ref": "#/$defs/alerting_provider_slack_AlertProvider"
+        },
+        "splunk": {
+          "$ref": "#/$defs/alerting_provider_splunk_AlertProvider"
+        },
+        "squadcast": {
+          "$ref": "#/$defs/alerting_provider_squadcast_AlertProvider"
+        },
+        "teams": {
+          "$ref": "#/$defs/alerting_provider_teams_AlertProvider"
+        },
+        "teams-workflows": {
+          "$ref": "#/$defs/alerting_provider_teamsworkflows_AlertProvider"
+        },
+        "telegram": {
+          "$ref": "#/$defs/alerting_provider_telegram_AlertProvider"
+        },
+        "twilio": {
+          "$ref": "#/$defs/alerting_provider_twilio_AlertProvider"
+        },
+        "vonage": {
+          "$ref": "#/$defs/alerting_provider_vonage_AlertProvider"
+        },
+        "webex": {
+          "$ref": "#/$defs/alerting_provider_webex_AlertProvider"
+        },
+        "zapier": {
+          "$ref": "#/$defs/alerting_provider_zapier_AlertProvider"
+        },
+        "zulip": {
+          "$ref": "#/$defs/alerting_provider_zulip_AlertProvider"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "alerting_alert_Alert": {
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "failure-threshold": {
+          "type": "integer"
+        },
+        "success-threshold": {
+          "type": "integer"
+        },
+        "minimum-reminder-interval": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "send-on-resolved": {
+          "type": "boolean"
+        },
+        "provider-override": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "type",
+        "failure-threshold",
+        "success-threshold"
+      ]
+    },
+    "alerting_provider_awsses_AlertProvider": {
+      "properties": {
+        "access-key-id": {
+          "type": "string"
+        },
+        "secret-access-key": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_awsses_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "access-key-id",
+        "secret-access-key",
+        "region",
+        "from",
+        "to"
+      ]
+    },
+    "alerting_provider_awsses_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "access-key-id": {
+          "type": "string"
+        },
+        "secret-access-key": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "access-key-id",
+        "secret-access-key",
+        "region",
+        "from",
+        "to"
+      ]
+    },
+    "alerting_provider_custom_AlertProvider": {
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "headers": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "placeholders": {
+          "additionalProperties": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "type": "object"
+        },
+        "client": {
+          "$ref": "#/$defs/client_Config"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_custom_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "url"
+      ]
+    },
+    "alerting_provider_custom_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "headers": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "placeholders": {
+          "additionalProperties": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "type": "object"
+        },
+        "client": {
+          "$ref": "#/$defs/client_Config"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "url"
+      ]
+    },
+    "alerting_provider_datadog_AlertProvider": {
+      "properties": {
+        "api-key": {
+          "type": "string"
+        },
+        "site": {
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_datadog_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "api-key"
+      ]
+    },
+    "alerting_provider_datadog_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "api-key": {
+          "type": "string"
+        },
+        "site": {
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "api-key"
+      ]
+    },
+    "alerting_provider_discord_AlertProvider": {
+      "properties": {
+        "webhook-url": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "message-content": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_discord_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_discord_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "webhook-url": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "message-content": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_email_AlertProvider": {
+      "properties": {
+        "from": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "host": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer"
+        },
+        "to": {
+          "type": "string"
+        },
+        "client": {
+          "$ref": "#/$defs/client_Config"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_email_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "from",
+        "username",
+        "password",
+        "host",
+        "port",
+        "to"
+      ]
+    },
+    "alerting_provider_email_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "host": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer"
+        },
+        "to": {
+          "type": "string"
+        },
+        "client": {
+          "$ref": "#/$defs/client_Config"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "from",
+        "username",
+        "password",
+        "host",
+        "port",
+        "to"
+      ]
+    },
+    "alerting_provider_gitea_AlertProvider": {
+      "properties": {
+        "repository-url": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "assignees": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "client": {
+          "$ref": "#/$defs/client_Config"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "repository-url",
+        "token"
+      ]
+    },
+    "alerting_provider_github_AlertProvider": {
+      "properties": {
+        "repository-url": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "repository-url",
+        "token"
+      ]
+    },
+    "alerting_provider_gitlab_AlertProvider": {
+      "properties": {
+        "webhook-url": {
+          "type": "string"
+        },
+        "authorization-key": {
+          "type": "string"
+        },
+        "severity": {
+          "type": "string"
+        },
+        "monitoring-tool": {
+          "type": "string"
+        },
+        "environment-name": {
+          "type": "string"
+        },
+        "service": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "webhook-url",
+        "authorization-key"
+      ]
+    },
+    "alerting_provider_googlechat_AlertProvider": {
+      "properties": {
+        "webhook-url": {
+          "type": "string"
+        },
+        "client": {
+          "$ref": "#/$defs/client_Config"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_googlechat_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_googlechat_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "webhook-url": {
+          "type": "string"
+        },
+        "client": {
+          "$ref": "#/$defs/client_Config"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_gotify_AlertProvider": {
+      "properties": {
+        "server-url": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "server-url",
+        "token"
+      ]
+    },
+    "alerting_provider_homeassistant_AlertProvider": {
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_homeassistant_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "url",
+        "token"
+      ]
+    },
+    "alerting_provider_homeassistant_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "url",
+        "token"
+      ]
+    },
+    "alerting_provider_ifttt_AlertProvider": {
+      "properties": {
+        "webhook-key": {
+          "type": "string"
+        },
+        "event-name": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_ifttt_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "webhook-key",
+        "event-name"
+      ]
+    },
+    "alerting_provider_ifttt_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "webhook-key": {
+          "type": "string"
+        },
+        "event-name": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "webhook-key",
+        "event-name"
+      ]
+    },
+    "alerting_provider_ilert_AlertProvider": {
+      "properties": {
+        "integration-key": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_ilert_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "integration-key"
+      ]
+    },
+    "alerting_provider_ilert_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "integration-key": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "integration-key"
+      ]
+    },
+    "alerting_provider_incidentio_AlertProvider": {
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "auth-token": {
+          "type": "string"
+        },
+        "source-url": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "object"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_incidentio_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "alerting_provider_incidentio_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "auth-token": {
+          "type": "string"
+        },
+        "source-url": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group"
+      ]
+    },
+    "alerting_provider_line_AlertProvider": {
+      "properties": {
+        "channel-access-token": {
+          "type": "string"
+        },
+        "user-ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_line_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "channel-access-token",
+        "user-ids"
+      ]
+    },
+    "alerting_provider_line_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "channel-access-token": {
+          "type": "string"
+        },
+        "user-ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "channel-access-token",
+        "user-ids"
+      ]
+    },
+    "alerting_provider_matrix_AlertProvider": {
+      "properties": {
+        "server-url": {
+          "type": "string"
+        },
+        "access-token": {
+          "type": "string"
+        },
+        "internal-room-id": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_matrix_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "server-url",
+        "access-token",
+        "internal-room-id"
+      ]
+    },
+    "alerting_provider_matrix_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "server-url": {
+          "type": "string"
+        },
+        "access-token": {
+          "type": "string"
+        },
+        "internal-room-id": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "server-url",
+        "access-token",
+        "internal-room-id"
+      ]
+    },
+    "alerting_provider_mattermost_AlertProvider": {
+      "properties": {
+        "webhook-url": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "client": {
+          "$ref": "#/$defs/client_Config"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_mattermost_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_mattermost_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "webhook-url": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "client": {
+          "$ref": "#/$defs/client_Config"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_messagebird_AlertProvider": {
+      "properties": {
+        "access-key": {
+          "type": "string"
+        },
+        "originator": {
+          "type": "string"
+        },
+        "recipients": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "access-key",
+        "originator",
+        "recipients"
+      ]
+    },
+    "alerting_provider_n8n_AlertProvider": {
+      "properties": {
+        "webhook-url": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_n8n_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_n8n_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "webhook-url": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_newrelic_AlertProvider": {
+      "properties": {
+        "insert-key": {
+          "type": "string"
+        },
+        "account-id": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_newrelic_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "insert-key",
+        "account-id"
+      ]
+    },
+    "alerting_provider_newrelic_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "insert-key": {
+          "type": "string"
+        },
+        "account-id": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "insert-key",
+        "account-id"
+      ]
+    },
+    "alerting_provider_ntfy_AlertProvider": {
+      "properties": {
+        "topic": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "integer"
+        },
+        "token": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "click": {
+          "type": "string"
+        },
+        "disable-firebase": {
+          "type": "boolean"
+        },
+        "disable-cache": {
+          "type": "boolean"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_ntfy_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "topic"
+      ]
+    },
+    "alerting_provider_ntfy_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "topic": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "integer"
+        },
+        "token": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "click": {
+          "type": "string"
+        },
+        "disable-firebase": {
+          "type": "boolean"
+        },
+        "disable-cache": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "topic"
+      ]
+    },
+    "alerting_provider_opsgenie_AlertProvider": {
+      "properties": {
+        "api-key": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "entity-prefix": {
+          "type": "string"
+        },
+        "alias-prefix": {
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "api-key",
+        "priority",
+        "source",
+        "entity-prefix",
+        "alias-prefix",
+        "tags"
+      ]
+    },
+    "alerting_provider_pagerduty_AlertProvider": {
+      "properties": {
+        "integration-key": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_pagerduty_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "integration-key"
+      ]
+    },
+    "alerting_provider_pagerduty_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "integration-key": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "integration-key"
+      ]
+    },
+    "alerting_provider_plivo_AlertProvider": {
+      "properties": {
+        "auth-id": {
+          "type": "string"
+        },
+        "auth-token": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_plivo_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "auth-id",
+        "auth-token",
+        "from",
+        "to"
+      ]
+    },
+    "alerting_provider_plivo_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "auth-id": {
+          "type": "string"
+        },
+        "auth-token": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "auth-id",
+        "auth-token",
+        "from",
+        "to"
+      ]
+    },
+    "alerting_provider_pushover_AlertProvider": {
+      "properties": {
+        "application-token": {
+          "type": "string"
+        },
+        "user-key": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "integer"
+        },
+        "resolved-priority": {
+          "type": "integer"
+        },
+        "sound": {
+          "type": "string"
+        },
+        "ttl": {
+          "type": "integer"
+        },
+        "device": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "application-token",
+        "user-key"
+      ]
+    },
+    "alerting_provider_rocketchat_AlertProvider": {
+      "properties": {
+        "webhook-url": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_rocketchat_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_rocketchat_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "webhook-url": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_sendgrid_AlertProvider": {
+      "properties": {
+        "api-key": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "client": {
+          "$ref": "#/$defs/client_Config"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_sendgrid_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "api-key",
+        "from",
+        "to"
+      ]
+    },
+    "alerting_provider_sendgrid_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "api-key": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "client": {
+          "$ref": "#/$defs/client_Config"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "api-key",
+        "from",
+        "to"
+      ]
+    },
+    "alerting_provider_signal_AlertProvider": {
+      "properties": {
+        "api-url": {
+          "type": "string"
+        },
+        "number": {
+          "type": "string"
+        },
+        "recipients": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_signal_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "api-url",
+        "number",
+        "recipients"
+      ]
+    },
+    "alerting_provider_signal_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "api-url": {
+          "type": "string"
+        },
+        "number": {
+          "type": "string"
+        },
+        "recipients": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "api-url",
+        "number",
+        "recipients"
+      ]
+    },
+    "alerting_provider_signl4_AlertProvider": {
+      "properties": {
+        "team-secret": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_signl4_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "team-secret"
+      ]
+    },
+    "alerting_provider_signl4_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "team-secret": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "team-secret"
+      ]
+    },
+    "alerting_provider_slack_AlertProvider": {
+      "properties": {
+        "webhook-url": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_slack_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_slack_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "webhook-url": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_splunk_AlertProvider": {
+      "properties": {
+        "hec-url": {
+          "type": "string"
+        },
+        "hec-token": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "sourcetype": {
+          "type": "string"
+        },
+        "index": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_splunk_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "hec-url",
+        "hec-token"
+      ]
+    },
+    "alerting_provider_splunk_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "hec-url": {
+          "type": "string"
+        },
+        "hec-token": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "sourcetype": {
+          "type": "string"
+        },
+        "index": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "hec-url",
+        "hec-token"
+      ]
+    },
+    "alerting_provider_squadcast_AlertProvider": {
+      "properties": {
+        "webhook-url": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_squadcast_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_squadcast_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "webhook-url": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_teams_AlertProvider": {
+      "properties": {
+        "webhook-url": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "client": {
+          "$ref": "#/$defs/client_Config"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_teams_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_teams_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "webhook-url": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "client": {
+          "$ref": "#/$defs/client_Config"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_teamsworkflows_AlertProvider": {
+      "properties": {
+        "webhook-url": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_teamsworkflows_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_teamsworkflows_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "webhook-url": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_telegram_AlertProvider": {
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "topic-id": {
+          "type": "string"
+        },
+        "api-url": {
+          "type": "string"
+        },
+        "client": {
+          "$ref": "#/$defs/client_Config"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_telegram_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "token",
+        "id",
+        "api-url"
+      ]
+    },
+    "alerting_provider_telegram_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "topic-id": {
+          "type": "string"
+        },
+        "api-url": {
+          "type": "string"
+        },
+        "client": {
+          "$ref": "#/$defs/client_Config"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "token",
+        "id",
+        "api-url"
+      ]
+    },
+    "alerting_provider_twilio_AlertProvider": {
+      "properties": {
+        "sid": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "text-twilio-triggered": {
+          "type": "string"
+        },
+        "text-twilio-resolved": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "sid",
+        "token",
+        "from",
+        "to"
+      ]
+    },
+    "alerting_provider_vonage_AlertProvider": {
+      "properties": {
+        "api-key": {
+          "type": "string"
+        },
+        "api-secret": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_vonage_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "api-key",
+        "api-secret",
+        "from",
+        "to"
+      ]
+    },
+    "alerting_provider_vonage_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "api-key": {
+          "type": "string"
+        },
+        "api-secret": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "api-key",
+        "api-secret",
+        "from",
+        "to"
+      ]
+    },
+    "alerting_provider_webex_AlertProvider": {
+      "properties": {
+        "webhook-url": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_webex_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_webex_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "webhook-url": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_zapier_AlertProvider": {
+      "properties": {
+        "webhook-url": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_zapier_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_zapier_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "webhook-url": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "webhook-url"
+      ]
+    },
+    "alerting_provider_zulip_AlertProvider": {
+      "properties": {
+        "bot-email": {
+          "type": "string"
+        },
+        "bot-api-key": {
+          "type": "string"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "channel-id": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_zulip_Override"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "bot-email",
+        "bot-api-key",
+        "domain",
+        "channel-id"
+      ]
+    },
+    "alerting_provider_zulip_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "bot-email": {
+          "type": "string"
+        },
+        "bot-api-key": {
+          "type": "string"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "channel-id": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "group",
+        "bot-email",
+        "bot-api-key",
+        "domain",
+        "channel-id"
+      ]
+    },
+    "client_Config": {
+      "properties": {
+        "proxy-url": {
+          "type": "string"
+        },
+        "insecure": {
+          "type": "boolean"
+        },
+        "ignore-redirect": {
+          "type": "boolean"
+        },
+        "timeout": {
+          "type": "string"
+        },
+        "dns-resolver": {
+          "type": "string"
+        },
+        "oauth2": {
+          "$ref": "#/$defs/client_OAuth2Config"
+        },
+        "identity-aware-proxy": {
+          "$ref": "#/$defs/client_IAPConfig"
+        },
+        "network": {
+          "type": "string"
+        },
+        "tls": {
+          "$ref": "#/$defs/client_TLSConfig"
+        },
+        "tunnel": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "timeout",
+        "network"
+      ]
+    },
+    "client_IAPConfig": {
+      "properties": {
+        "audience": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "audience"
+      ]
+    },
+    "client_OAuth2Config": {
+      "properties": {
+        "token-url": {
+          "type": "string"
+        },
+        "client-id": {
+          "type": "string"
+        },
+        "client-secret": {
+          "type": "string"
+        },
+        "scopes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "token-url",
+        "client-id",
+        "client-secret",
+        "scopes"
+      ]
+    },
+    "client_TLSConfig": {
+      "properties": {
+        "certificate-file": {
+          "type": "string"
+        },
+        "private-key-file": {
+          "type": "string"
+        },
+        "renegotiation": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "config_announcement_Announcement": {
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "archived": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "timestamp",
+        "type",
+        "message"
+      ]
+    },
+    "config_connectivity_Checker": {
+      "properties": {
+        "target": {
+          "type": "string"
+        },
+        "interval": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "target"
+      ]
+    },
+    "config_connectivity_Config": {
+      "properties": {
+        "checker": {
+          "$ref": "#/$defs/config_connectivity_Checker"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "config_endpoint_Endpoint": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "group": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "graphql": {
+          "type": "boolean"
+        },
+        "headers": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "extra-labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "interval": {
+          "type": "string"
+        },
+        "conditions": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "alerts": {
+          "items": {
+            "$ref": "#/$defs/alerting_alert_Alert"
+          },
+          "type": "array"
+        },
+        "maintenance-windows": {
+          "items": {
+            "$ref": "#/$defs/config_maintenance_Config"
+          },
+          "type": "array"
+        },
+        "dns": {
+          "$ref": "#/$defs/config_endpoint_dns_Config"
+        },
+        "ssh": {
+          "$ref": "#/$defs/config_endpoint_ssh_Config"
+        },
+        "client": {
+          "$ref": "#/$defs/client_Config"
+        },
+        "ui": {
+          "$ref": "#/$defs/config_endpoint_ui_Config"
+        },
+        "store": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "always-run": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "name",
+        "url",
+        "conditions"
+      ]
+    },
+    "config_endpoint_ExternalEndpoint": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "group": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "alerts": {
+          "items": {
+            "$ref": "#/$defs/alerting_alert_Alert"
+          },
+          "type": "array"
+        },
+        "maintenance-windows": {
+          "items": {
+            "$ref": "#/$defs/config_maintenance_Config"
+          },
+          "type": "array"
+        },
+        "heartbeat": {
+          "$ref": "#/$defs/config_endpoint_heartbeat_Config"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "name"
+      ]
+    },
+    "config_endpoint_dns_Config": {
+      "properties": {
+        "query-type": {
+          "type": "string"
+        },
+        "query-name": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "query-type",
+        "query-name"
+      ]
+    },
+    "config_endpoint_heartbeat_Config": {
+      "properties": {
+        "interval": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "interval"
+      ]
+    },
+    "config_endpoint_ssh_Config": {
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "config_endpoint_ui_Badge": {
+      "properties": {
+        "response-time": {
+          "$ref": "#/$defs/config_endpoint_ui_ResponseTime"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "response-time"
+      ]
+    },
+    "config_endpoint_ui_Config": {
+      "properties": {
+        "hide-conditions": {
+          "type": "boolean"
+        },
+        "hide-hostname": {
+          "type": "boolean"
+        },
+        "hide-url": {
+          "type": "boolean"
+        },
+        "hide-port": {
+          "type": "boolean"
+        },
+        "hide-errors": {
+          "type": "boolean"
+        },
+        "dont-resolve-failed-conditions": {
+          "type": "boolean"
+        },
+        "badge": {
+          "$ref": "#/$defs/config_endpoint_ui_Badge"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "hide-conditions",
+        "hide-hostname",
+        "hide-url",
+        "hide-port",
+        "hide-errors",
+        "dont-resolve-failed-conditions",
+        "badge"
+      ]
+    },
+    "config_endpoint_ui_ResponseTime": {
+      "properties": {
+        "thresholds": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "thresholds"
+      ]
+    },
+    "config_maintenance_Config": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "start": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "every": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "enabled"
+      ]
+    },
+    "config_remote_Config": {
+      "properties": {
+        "instances": {
+          "items": {
+            "$ref": "#/$defs/config_remote_Instance"
+          },
+          "type": "array"
+        },
+        "client": {
+          "$ref": "#/$defs/client_Config"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "config_remote_Instance": {
+      "properties": {
+        "endpoint-prefix": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "endpoint-prefix",
+        "url"
+      ]
+    },
+    "config_suite_Suite": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "group": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "interval": {
+          "type": "string"
+        },
+        "timeout": {
+          "type": "string"
+        },
+        "context": {
+          "type": "object"
+        },
+        "endpoints": {
+          "items": {
+            "$ref": "#/$defs/config_endpoint_Endpoint"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "name",
+        "endpoints"
+      ]
+    },
+    "config_tunneling_Config": {
+      "properties": {},
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "config_ui_Button": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "link": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "config_ui_Config": {
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "header": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "link": {
+          "type": "string"
+        },
+        "buttons": {
+          "items": {
+            "$ref": "#/$defs/config_ui_Button"
+          },
+          "type": "array"
+        },
+        "custom-css": {
+          "type": "string"
+        },
+        "dark-mode": {
+          "type": "boolean"
+        },
+        "default-sort-by": {
+          "type": "string"
+        },
+        "default-filter-by": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "config_web_Config": {
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer"
+        },
+        "read-buffer-size": {
+          "type": "integer"
+        },
+        "tls": {
+          "$ref": "#/$defs/config_web_TLSConfig"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "address",
+        "port"
+      ]
+    },
+    "config_web_TLSConfig": {
+      "properties": {
+        "certificate-file": {
+          "type": "string"
+        },
+        "private-key-file": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "security_BasicConfig": {
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password-bcrypt-base64": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "username",
+        "password-bcrypt-base64"
+      ]
+    },
+    "security_Config": {
+      "properties": {
+        "basic": {
+          "$ref": "#/$defs/security_BasicConfig"
+        },
+        "oidc": {
+          "$ref": "#/$defs/security_OIDCConfig"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "security_OIDCConfig": {
+      "properties": {
+        "issuer-url": {
+          "type": "string"
+        },
+        "redirect-url": {
+          "type": "string"
+        },
+        "client-id": {
+          "type": "string"
+        },
+        "client-secret": {
+          "type": "string"
+        },
+        "scopes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "allowed-subjects": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "session-ttl": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "issuer-url",
+        "redirect-url",
+        "client-id",
+        "client-secret",
+        "scopes",
+        "allowed-subjects",
+        "session-ttl"
+      ]
+    },
+    "storage_Config": {
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "caching": {
+          "type": "boolean"
+        },
+        "maximum-number-of-results": {
+          "type": "integer"
+        },
+        "maximum-number-of-events": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "path",
+        "type"
+      ]
+    }
+  }
+}
