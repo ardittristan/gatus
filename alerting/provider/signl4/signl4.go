@@ -20,7 +20,7 @@ var (
 )
 
 type Config struct {
-	TeamSecret string `yaml:"team-secret"` // SIGNL4 team secret
+	TeamSecret string `yaml:"team-secret" jsonschema:"required"` // SIGNL4 team secret
 }
 
 func (cfg *Config) Validate() error {

@@ -30,7 +30,7 @@ var (
 )
 
 type Config struct {
-	Topic           string `yaml:"topic"`
+	Topic           string `yaml:"topic" jsonschema:"required"`
 	URL             string `yaml:"url,omitempty"`              // Defaults to DefaultURL
 	Priority        int    `yaml:"priority,omitempty"`         // Defaults to DefaultPriority
 	Token           string `yaml:"token,omitempty"`            // Defaults to ""

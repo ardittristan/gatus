@@ -27,9 +27,9 @@ var (
 )
 
 type Config struct {
-	APIKey string `yaml:"api-key"`
-	From   string `yaml:"from"`
-	To     string `yaml:"to"`
+	APIKey string `yaml:"api-key" jsonschema:"required"`
+	From   string `yaml:"from" jsonschema:"required"`
+	To     string `yaml:"to" jsonschema:"required"`
 
 	// ClientConfig is the configuration of the client used to communicate with the provider's target
 	ClientConfig *client.Config `yaml:"client,omitempty"`

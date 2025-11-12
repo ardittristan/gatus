@@ -20,8 +20,8 @@ var (
 )
 
 type Config struct {
-	WebhookURL string `yaml:"webhook-url"`       // Rocket.Chat incoming webhook URL
-	Channel    string `yaml:"channel,omitempty"` // Optional channel override
+	WebhookURL string `yaml:"webhook-url" jsonschema:"required"` // Rocket.Chat incoming webhook URL
+	Channel    string `yaml:"channel,omitempty"`                 // Optional channel override
 }
 
 func (cfg *Config) Validate() error {

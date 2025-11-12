@@ -20,8 +20,8 @@ var (
 )
 
 type Config struct {
-	WebhookURL string `yaml:"webhook-url"`     // Slack webhook URL
-	Title      string `yaml:"title,omitempty"` // Title of the message that will be sent
+	WebhookURL string `yaml:"webhook-url" jsonschema:"required"` // Slack webhook URL
+	Title      string `yaml:"title,omitempty"`                   // Title of the message that will be sent
 }
 
 func (cfg *Config) Validate() error {

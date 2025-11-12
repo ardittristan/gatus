@@ -23,9 +23,9 @@ var (
 )
 
 type Config struct {
-	ApiURL     string   `yaml:"api-url"`    // Signal API URL (e.g., signal-cli-rest-api instance)
-	Number     string   `yaml:"number"`     // Sender phone number
-	Recipients []string `yaml:"recipients"` // List of recipient phone numbers
+	ApiURL     string   `yaml:"api-url" jsonschema:"required"`    // Signal API URL (e.g., signal-cli-rest-api instance)
+	Number     string   `yaml:"number" jsonschema:"required"`     // Sender phone number
+	Recipients []string `yaml:"recipients" jsonschema:"required"` // List of recipient phone numbers
 }
 
 func (cfg *Config) Validate() error {

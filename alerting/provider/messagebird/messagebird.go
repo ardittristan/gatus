@@ -23,9 +23,9 @@ var (
 )
 
 type Config struct {
-	AccessKey  string `yaml:"access-key"`
-	Originator string `yaml:"originator"`
-	Recipients string `yaml:"recipients"`
+	AccessKey  string `yaml:"access-key" jsonschema:"required"`
+	Originator string `yaml:"originator" jsonschema:"required"`
+	Recipients string `yaml:"recipients" jsonschema:"required"`
 }
 
 func (cfg *Config) Validate() error {

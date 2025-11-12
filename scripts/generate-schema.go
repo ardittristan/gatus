@@ -26,6 +26,9 @@ func main() {
 	r := new(jsonschema.Reflector)
 
 	r.FieldNameTag = "yaml"
+	r.AllowAdditionalProperties = true
+	r.RequiredFromJSONSchemaTags = true
+	_ = r.AddGoComments("github.com/TwiN/gatus/v5", "./", jsonschema.WithFullComment())
 
 	// taken from https://github.com/megaease/easeprobe/blob/8a29940850fe335fe91fd085835c039bd6c745a1/conf/conf.go#L154-L170
 	// Apache License 2.0

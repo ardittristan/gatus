@@ -46,13 +46,13 @@ var (
 // Announcement represents a system-wide announcement
 type Announcement struct {
 	// Timestamp is the UTC timestamp when the announcement was made
-	Timestamp time.Time `yaml:"timestamp" json:"timestamp"`
+	Timestamp time.Time `yaml:"timestamp" json:"timestamp" jsonschema:"required"`
 
 	// Type is the type of announcement (outage, warning, information, operational, none)
 	Type string `yaml:"type" json:"type"`
 
 	// Message is the user-facing text describing the announcement
-	Message string `yaml:"message" json:"message"`
+	Message string `yaml:"message" json:"message" jsonschema:"required"`
 
 	// Archived indicates whether the announcement should be displayed in the historical section
 	// instead of at the top of the status page

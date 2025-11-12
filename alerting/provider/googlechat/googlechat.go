@@ -20,7 +20,7 @@ var (
 )
 
 type Config struct {
-	WebhookURL   string         `yaml:"webhook-url"`
+	WebhookURL   string         `yaml:"webhook-url" jsonschema:"required"`
 	ClientConfig *client.Config `yaml:"client,omitempty"`
 }
 

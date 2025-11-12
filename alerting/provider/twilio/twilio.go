@@ -24,10 +24,10 @@ var (
 )
 
 type Config struct {
-	SID   string `yaml:"sid"`
-	Token string `yaml:"token"`
-	From  string `yaml:"from"`
-	To    string `yaml:"to"`
+	SID   string `yaml:"sid" jsonschema:"required"`
+	Token string `yaml:"token" jsonschema:"required"`
+	From  string `yaml:"from" jsonschema:"required"`
+	To    string `yaml:"to" jsonschema:"required"`
 
 	// TODO in v6.0.0: Rename this to text-triggered
 	TextTwilioTriggered string `yaml:"text-twilio-triggered,omitempty"` // String used in the SMS body and subject (optional)

@@ -22,11 +22,11 @@ var (
 )
 
 type Config struct {
-	HecURL     string `yaml:"hec-url"`              // Splunk HEC (HTTP Event Collector) URL
-	HecToken   string `yaml:"hec-token"`            // Splunk HEC token
-	Source     string `yaml:"source,omitempty"`     // Event source
-	SourceType string `yaml:"sourcetype,omitempty"` // Event source type
-	Index      string `yaml:"index,omitempty"`      // Splunk index
+	HecURL     string `yaml:"hec-url" jsonschema:"required"`   // Splunk HEC (HTTP Event Collector) URL
+	HecToken   string `yaml:"hec-token" jsonschema:"required"` // Splunk HEC token
+	Source     string `yaml:"source,omitempty"`                // Event source
+	SourceType string `yaml:"sourcetype,omitempty"`            // Event source type
+	Index      string `yaml:"index,omitempty"`                 // Splunk index
 }
 
 func (cfg *Config) Validate() error {

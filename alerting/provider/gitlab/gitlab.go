@@ -27,12 +27,12 @@ var (
 )
 
 type Config struct {
-	WebhookURL       string `yaml:"webhook-url"`                // The webhook url provided by GitLab
-	AuthorizationKey string `yaml:"authorization-key"`          // The authorization key provided by GitLab
-	Severity         string `yaml:"severity,omitempty"`         // Severity can be one of: critical, high, medium, low, info, unknown. Defaults to critical
-	MonitoringTool   string `yaml:"monitoring-tool,omitempty"`  // MonitoringTool overrides the name sent to gitlab. Defaults to gatus
-	EnvironmentName  string `yaml:"environment-name,omitempty"` // EnvironmentName is the name of the associated GitLab environment. Required to display alerts on a dashboard.
-	Service          string `yaml:"service,omitempty"`          // Service affected. Defaults to the endpoint's display name
+	WebhookURL       string `yaml:"webhook-url" jsonschema:"required"`       // The webhook url provided by GitLab
+	AuthorizationKey string `yaml:"authorization-key" jsonschema:"required"` // The authorization key provided by GitLab
+	Severity         string `yaml:"severity,omitempty"`                      // Severity can be one of: critical, high, medium, low, info, unknown. Defaults to critical
+	MonitoringTool   string `yaml:"monitoring-tool,omitempty"`               // MonitoringTool overrides the name sent to gitlab. Defaults to gatus
+	EnvironmentName  string `yaml:"environment-name,omitempty"`              // EnvironmentName is the name of the associated GitLab environment. Required to display alerts on a dashboard.
+	Service          string `yaml:"service,omitempty"`                       // Service affected. Defaults to the endpoint's display name
 }
 
 func (cfg *Config) Validate() error {

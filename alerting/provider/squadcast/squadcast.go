@@ -20,7 +20,7 @@ var (
 )
 
 type Config struct {
-	WebhookURL string `yaml:"webhook-url"` // Squadcast webhook URL
+	WebhookURL string `yaml:"webhook-url" jsonschema:"required" jsonschema:"required"` // Squadcast webhook URL
 }
 
 func (cfg *Config) Validate() error {

@@ -23,8 +23,8 @@ var (
 )
 
 type Config struct {
-	Token   string `yaml:"token"`
-	ID      string `yaml:"id"`
+	Token   string `yaml:"token" jsonschema:"required"`
+	ID      string `yaml:"id" jsonschema:"required"`
 	TopicID string `yaml:"topic-id,omitempty"`
 	ApiUrl  string `yaml:"api-url"`
 

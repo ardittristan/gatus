@@ -82,13 +82,13 @@ type Endpoint struct {
 	Enabled *bool `yaml:"enabled,omitempty"`
 
 	// Name of the endpoint. Can be anything.
-	Name string `yaml:"name"`
+	Name string `yaml:"name" jsonschema:"required"`
 
 	// Group the endpoint is a part of. Used for grouping multiple endpoints together on the front end.
 	Group string `yaml:"group,omitempty"`
 
 	// URL to send the request to
-	URL string `yaml:"url"`
+	URL string `yaml:"url" jsonschema:"required"`
 
 	// Method of the request made to the url of the endpoint
 	Method string `yaml:"method,omitempty"`

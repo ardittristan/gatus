@@ -19,7 +19,7 @@ var (
 )
 
 type Config struct {
-	URL          string                       `yaml:"url"`
+	URL          string                       `yaml:"url" jsonschema:"required"`
 	Method       string                       `yaml:"method,omitempty"`
 	Body         string                       `yaml:"body,omitempty"`
 	Headers      map[string]string            `yaml:"headers,omitempty"`

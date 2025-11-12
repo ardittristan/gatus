@@ -20,7 +20,7 @@ var (
 )
 
 type Config struct {
-	WebhookURL     string `yaml:"webhook-url"`
+	WebhookURL     string `yaml:"webhook-url" jsonschema:"required"`
 	Title          string `yaml:"title,omitempty"`           // Title of the message that will be sent
 	MessageContent string `yaml:"message-content,omitempty"` // Message content for pinging users or groups (e.g. "<@123456789>" or "<@&987654321>")
 }

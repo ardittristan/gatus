@@ -21,8 +21,8 @@ var (
 )
 
 type Config struct {
-	WebhookKey string `yaml:"webhook-key"` // IFTTT Webhook key
-	EventName  string `yaml:"event-name"`  // IFTTT event name
+	WebhookKey string `yaml:"webhook-key" jsonschema:"required"` // IFTTT Webhook key
+	EventName  string `yaml:"event-name" jsonschema:"required"`  // IFTTT event name
 }
 
 func (cfg *Config) Validate() error {

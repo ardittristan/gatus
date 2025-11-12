@@ -29,10 +29,10 @@ var (
 type Config struct {
 	AccessKeyID     string `yaml:"access-key-id"`
 	SecretAccessKey string `yaml:"secret-access-key"`
-	Region          string `yaml:"region"`
+	Region          string `yaml:"region" jsonschema:"required"`
 
-	From string `yaml:"from"`
-	To   string `yaml:"to"`
+	From string `yaml:"from" jsonschema:"required"`
+	To   string `yaml:"to" jsonschema:"required"`
 }
 
 func (cfg *Config) Validate() error {

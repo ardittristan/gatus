@@ -26,13 +26,13 @@ type ExternalEndpoint struct {
 	Enabled *bool `yaml:"enabled,omitempty"`
 
 	// Name of the endpoint. Can be anything.
-	Name string `yaml:"name"`
+	Name string `yaml:"name" jsonschema:"required"`
 
 	// Group the endpoint is a part of. Used for grouping multiple endpoints together on the front end.
 	Group string `yaml:"group,omitempty"`
 
 	// Token is the bearer token that must be provided through the Authorization header to push results to the endpoint
-	Token string `yaml:"token,omitempty"`
+	Token string `yaml:"token,omitempty" jsonschema:"required"`
 
 	// Alerts is the alerting configuration for the endpoint in case of failure
 	Alerts []*alert.Alert `yaml:"alerts,omitempty"`

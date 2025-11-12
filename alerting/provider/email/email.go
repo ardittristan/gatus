@@ -22,12 +22,12 @@ var (
 )
 
 type Config struct {
-	From     string `yaml:"from"`
+	From     string `yaml:"from" jsonschema:"required"`
 	Username string `yaml:"username"`
 	Password string `yaml:"password"`
-	Host     string `yaml:"host"`
-	Port     int    `yaml:"port"`
-	To       string `yaml:"to"`
+	Host     string `yaml:"host" jsonschema:"required"`
+	Port     int    `yaml:"port" jsonschema:"required"`
+	To       string `yaml:"to" jsonschema:"required"`
 
 	// ClientConfig is the configuration of the client used to communicate with the provider's target
 	ClientConfig *client.Config `yaml:"client,omitempty"`

@@ -22,9 +22,9 @@ var (
 )
 
 type Config struct {
-	RepositoryURL string   `yaml:"repository-url"`      // The URL of the Gitea repository to create issues in
-	Token         string   `yaml:"token"`               // Token requires at least RW on issues and RO on metadata
-	Assignees     []string `yaml:"assignees,omitempty"` // Assignees is a list of users to assign the issue to
+	RepositoryURL string   `yaml:"repository-url" jsonschema:"required"` // The URL of the Gitea repository to create issues in
+	Token         string   `yaml:"token" jsonschema:"required"`          // Token requires at least RW on issues and RO on metadata
+	Assignees     []string `yaml:"assignees,omitempty"`                  // Assignees is a list of users to assign the issue to
 
 	username        string
 	repositoryOwner string

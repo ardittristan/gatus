@@ -19,13 +19,13 @@ const (
 
 // OIDCConfig is the configuration for OIDC authentication
 type OIDCConfig struct {
-	IssuerURL       string        `yaml:"issuer-url"`   // e.g. https://dev-12345678.okta.com
-	RedirectURL     string        `yaml:"redirect-url"` // e.g. http://localhost:8080/authorization-code/callback
-	ClientID        string        `yaml:"client-id"`
-	ClientSecret    string        `yaml:"client-secret"`
-	Scopes          []string      `yaml:"scopes"`           // e.g. ["openid"]
-	AllowedSubjects []string      `yaml:"allowed-subjects"` // e.g. ["user1@example.com"]. If empty, all subjects are allowed
-	SessionTTL      time.Duration `yaml:"session-ttl"`      // e.g. 8h. Defaults to 8 hours
+	IssuerURL       string        `yaml:"issuer-url" jsonschema:"required"`   // e.g. https://dev-12345678.okta.com
+	RedirectURL     string        `yaml:"redirect-url" jsonschema:"required"` // e.g. http://localhost:8080/authorization-code/callback
+	ClientID        string        `yaml:"client-id" jsonschema:"required"`
+	ClientSecret    string        `yaml:"client-secret" jsonschema:"required"`
+	Scopes          []string      `yaml:"scopes" jsonschema:"required"` // e.g. ["openid"]
+	AllowedSubjects []string      `yaml:"allowed-subjects"`             // e.g. ["user1@example.com"]. If empty, all subjects are allowed
+	SessionTTL      time.Duration `yaml:"session-ttl"`                  // e.g. 8h. Defaults to 8 hours
 
 	oauth2Config oauth2.Config
 	verifier     *oidc.IDTokenVerifier

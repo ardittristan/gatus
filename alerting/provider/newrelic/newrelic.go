@@ -22,9 +22,9 @@ var (
 )
 
 type Config struct {
-	InsertKey string `yaml:"insert-key"`       // New Relic Insert key
-	AccountID string `yaml:"account-id"`       // New Relic account ID
-	Region    string `yaml:"region,omitempty"` // Region (US or EU, defaults to US)
+	InsertKey string `yaml:"insert-key" jsonschema:"required"` // New Relic Insert key
+	AccountID string `yaml:"account-id" jsonschema:"required"` // New Relic account ID
+	Region    string `yaml:"region,omitempty"`                 // Region (US or EU, defaults to US)
 }
 
 func (cfg *Config) Validate() error {

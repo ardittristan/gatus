@@ -24,10 +24,10 @@ var (
 )
 
 type Config struct {
-	AuthID    string   `yaml:"auth-id"`
-	AuthToken string   `yaml:"auth-token"`
-	From      string   `yaml:"from"`
-	To        []string `yaml:"to"`
+	AuthID    string   `yaml:"auth-id" jsonschema:"required"`
+	AuthToken string   `yaml:"auth-token" jsonschema:"required"`
+	From      string   `yaml:"from" jsonschema:"required"`
+	To        []string `yaml:"to" jsonschema:"required"`
 }
 
 func (cfg *Config) Validate() error {

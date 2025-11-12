@@ -26,10 +26,10 @@ var (
 )
 
 type Config struct {
-	APIKey    string   `yaml:"api-key"`
-	APISecret string   `yaml:"api-secret"`
-	From      string   `yaml:"from"`
-	To        []string `yaml:"to"`
+	APIKey    string   `yaml:"api-key" jsonschema:"required"`
+	APISecret string   `yaml:"api-secret" jsonschema:"required"`
+	From      string   `yaml:"from" jsonschema:"required"`
+	To        []string `yaml:"to" jsonschema:"required"`
 }
 
 func (cfg *Config) Validate() error {

@@ -13,8 +13,8 @@ var (
 )
 
 type Config struct {
-	Username string `yaml:"username,omitempty"`
-	Password string `yaml:"password,omitempty"`
+	Username string `yaml:"username,omitempty" jsonschema:"required"`
+	Password string `yaml:"password,omitempty" jsonschema:"required"`
 }
 
 // Validate the SSH configuration

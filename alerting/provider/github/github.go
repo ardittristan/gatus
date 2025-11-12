@@ -22,8 +22,8 @@ var (
 )
 
 type Config struct {
-	RepositoryURL string `yaml:"repository-url"` // The URL of the GitHub repository to create issues in
-	Token         string `yaml:"token"`          // Token requires at least RW on issues and RO on metadata
+	RepositoryURL string `yaml:"repository-url" jsonschema:"required"` // The URL of the GitHub repository to create issues in
+	Token         string `yaml:"token" jsonschema:"required"`          // Token requires at least RW on issues and RO on metadata
 
 	username        string
 	repositoryOwner string

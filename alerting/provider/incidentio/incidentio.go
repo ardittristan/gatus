@@ -29,8 +29,8 @@ var (
 )
 
 type Config struct {
-	URL       string                 `yaml:"url,omitempty"`
-	AuthToken string                 `yaml:"auth-token,omitempty"`
+	URL       string                 `yaml:"url,omitempty" jsonschema:"required"`
+	AuthToken string                 `yaml:"auth-token,omitempty" jsonschema:"required"`
 	SourceURL string                 `yaml:"source-url,omitempty"`
 	Metadata  map[string]interface{} `yaml:"metadata,omitempty"`
 }

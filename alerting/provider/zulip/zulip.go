@@ -23,10 +23,10 @@ var (
 )
 
 type Config struct {
-	BotEmail  string `yaml:"bot-email"`   // Email of the bot user
-	BotAPIKey string `yaml:"bot-api-key"` // API key of the bot user
-	Domain    string `yaml:"domain"`      // Domain of the Zulip server
-	ChannelID string `yaml:"channel-id"`  // ID of the channel to send the message to
+	BotEmail  string `yaml:"bot-email" jsonschema:"required"`   // Email of the bot user
+	BotAPIKey string `yaml:"bot-api-key" jsonschema:"required"` // API key of the bot user
+	Domain    string `yaml:"domain" jsonschema:"required"`      // Domain of the Zulip server
+	ChannelID string `yaml:"channel-id" jsonschema:"required"`  // ID of the channel to send the message to
 }
 
 func (cfg *Config) Validate() error {

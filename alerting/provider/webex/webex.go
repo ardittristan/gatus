@@ -20,7 +20,7 @@ var (
 )
 
 type Config struct {
-	WebhookURL string `yaml:"webhook-url"` // Webex Teams webhook URL
+	WebhookURL string `yaml:"webhook-url" jsonschema:"required"` // Webex Teams webhook URL
 }
 
 func (cfg *Config) Validate() error {

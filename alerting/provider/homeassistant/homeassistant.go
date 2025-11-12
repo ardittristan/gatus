@@ -21,8 +21,8 @@ var (
 )
 
 type Config struct {
-	URL   string `yaml:"url"`
-	Token string `yaml:"token"`
+	URL   string `yaml:"url" jsonschema:"required"`
+	Token string `yaml:"token" jsonschema:"required"`
 }
 
 func (cfg *Config) Validate() error {

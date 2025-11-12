@@ -10,7 +10,7 @@ import (
 
 type Config struct {
 	// Instances is a list of remote instances to retrieve endpoint statuses from.
-	Instances []Instance `yaml:"instances,omitempty"`
+	Instances []Instance `yaml:"instances,omitempty" jsonschema:"required"`
 
 	// ClientConfig is the configuration of the client used to communicate with the provider's target
 	ClientConfig *client.Config `yaml:"client,omitempty"`
@@ -18,7 +18,7 @@ type Config struct {
 
 type Instance struct {
 	EndpointPrefix string `yaml:"endpoint-prefix"`
-	URL            string `yaml:"url"`
+	URL            string `yaml:"url" jsonschema:"required"`
 }
 
 func (c *Config) ValidateAndSetDefaults() error {

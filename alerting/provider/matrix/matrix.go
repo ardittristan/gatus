@@ -29,10 +29,10 @@ type Config struct {
 	ServerURL string `yaml:"server-url"`
 
 	// AccessToken is the bot user's access token to send messages
-	AccessToken string `yaml:"access-token"`
+	AccessToken string `yaml:"access-token" jsonschema:"required"`
 
 	// InternalRoomID is the room that the bot user has permissions to send messages to
-	InternalRoomID string `yaml:"internal-room-id"`
+	InternalRoomID string `yaml:"internal-room-id" jsonschema:"required"`
 }
 
 func (cfg *Config) Validate() error {

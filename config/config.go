@@ -89,7 +89,7 @@ type Config struct {
 	Alerting *alerting.Config `yaml:"alerting,omitempty"`
 
 	// Endpoints is the list of endpoints to monitor
-	Endpoints []*endpoint.Endpoint `yaml:"endpoints,omitempty"`
+	Endpoints []*endpoint.Endpoint `yaml:"endpoints,omitempty" jsonschema:"required"`
 
 	// ExternalEndpoints is the list of all external endpoints
 	ExternalEndpoints []*endpoint.ExternalEndpoint `yaml:"external-endpoints,omitempty"`

@@ -22,7 +22,7 @@ var (
 // Alert is endpoint.Endpoint's alert configuration
 type Alert struct {
 	// Type of alert (required)
-	Type Type `yaml:"type"`
+	Type Type `yaml:"type" jsonschema:"required"`
 
 	// Enabled defines whether the alert is enabled
 	//

@@ -15,7 +15,7 @@ var (
 
 // Config is the configuration for the connectivity checker.
 type Config struct {
-	Checker *Checker `yaml:"checker,omitempty"`
+	Checker *Checker `yaml:"checker,omitempty" jsonschema:"required"`
 }
 
 func (c *Config) ValidateAndSetDefaults() error {
@@ -34,7 +34,7 @@ func (c *Config) ValidateAndSetDefaults() error {
 
 // Checker is the configuration for making sure Gatus has access to the internet.
 type Checker struct {
-	Target   string        `yaml:"target"` // e.g. 1.1.1.1:53
+	Target   string        `yaml:"target" jsonschema:"required"` // e.g. 1.1.1.1:53
 	Interval time.Duration `yaml:"interval,omitempty"`
 
 	isConnected bool

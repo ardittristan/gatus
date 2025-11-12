@@ -21,9 +21,9 @@ var (
 )
 
 type Config struct {
-	APIKey string   `yaml:"api-key"`        // Datadog API key
-	Site   string   `yaml:"site,omitempty"` // Datadog site (e.g., datadoghq.com, datadoghq.eu)
-	Tags   []string `yaml:"tags,omitempty"` // Additional tags to include
+	APIKey string   `yaml:"api-key" jsonschema:"required"` // Datadog API key
+	Site   string   `yaml:"site,omitempty"`                // Datadog site (e.g., datadoghq.com, datadoghq.eu)
+	Tags   []string `yaml:"tags,omitempty"`                // Additional tags to include
 }
 
 func (cfg *Config) Validate() error {

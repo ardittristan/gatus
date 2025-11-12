@@ -26,7 +26,7 @@ var (
 
 type Config struct {
 	// APIKey to use for
-	APIKey string `yaml:"api-key"`
+	APIKey string `yaml:"api-key" jsonschema:"required"`
 
 	// Priority to be used in Opsgenie alert payload
 	//

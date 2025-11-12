@@ -11,10 +11,10 @@ import (
 
 // Config represents the configuration for an SSH tunnel
 type Config struct {
-	Type       string `yaml:"type"`
-	Host       string `yaml:"host"`
+	Type       string `yaml:"type" jsonschema:"required"`
+	Host       string `yaml:"host" jsonschema:"required"`
 	Port       int    `yaml:"port,omitempty"`
-	Username   string `yaml:"username"`
+	Username   string `yaml:"username" jsonschema:"required"`
 	PrivateKey string `yaml:"private-key,omitempty"`
 	Password   string `yaml:"password,omitempty"`
 }

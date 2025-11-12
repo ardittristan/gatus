@@ -20,7 +20,7 @@ var (
 )
 
 type Config struct {
-	WebhookURL string `yaml:"webhook-url"`
+	WebhookURL string `yaml:"webhook-url" jsonschema:"required"`
 	Title      string `yaml:"title,omitempty"` // Title of the message that will be sent
 
 	// ClientConfig is the configuration of the client used to communicate with the provider's target

@@ -21,8 +21,8 @@ var (
 )
 
 type Config struct {
-	ChannelAccessToken string   `yaml:"channel-access-token"` // Line Messaging API channel access token
-	UserIDs            []string `yaml:"user-ids"`             // List of Line user IDs to send messages to
+	ChannelAccessToken string   `yaml:"channel-access-token" jsonschema:"required"` // Line Messaging API channel access token
+	UserIDs            []string `yaml:"user-ids" jsonschema:"required"`             // List of Line user IDs to send messages to
 }
 
 func (cfg *Config) Validate() error {

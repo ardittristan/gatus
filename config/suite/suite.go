@@ -35,7 +35,7 @@ var (
 // Suite is a collection of endpoints that are executed sequentially with shared context
 type Suite struct {
 	// Name of the suite. Must be unique.
-	Name string `yaml:"name"`
+	Name string `yaml:"name" jsonschema:"required"`
 
 	// Group the suite belongs to. Used for grouping multiple suites together.
 	Group string `yaml:"group,omitempty"`
@@ -53,7 +53,7 @@ type Suite struct {
 	InitialContext map[string]interface{} `yaml:"context,omitempty"`
 
 	// Endpoints in the suite (executed sequentially)
-	Endpoints []*endpoint.Endpoint `yaml:"endpoints"`
+	Endpoints []*endpoint.Endpoint `yaml:"endpoints" jsonschema:"required"`
 }
 
 // IsEnabled returns whether the suite is enabled

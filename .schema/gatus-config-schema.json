@@ -6,200 +6,261 @@
     "Config": {
       "properties": {
         "debug": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Debug Whether to enable debug logs\nDeprecated: Use the GATUS_LOG_LEVEL environment variable instead"
         },
         "metrics": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Metrics Whether to expose metrics at /metrics"
         },
         "skip-invalid-config-update": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "SkipInvalidConfigUpdate Whether to make the application ignore invalid configuration\nif the configuration file is updated while the application is running"
         },
         "disable-monitoring-lock": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "DisableMonitoringLock Whether to disable the monitoring lock\nThe monitoring lock is what prevents multiple endpoints from being processed at the same time.\nDisabling this may lead to inaccurate response times\n\nDeprecated: Use Concurrency instead TODO: REMOVE THIS IN v6.0.0"
         },
         "concurrency": {
-          "type": "integer"
+          "type": "integer",
+          "description": "Concurrency is the maximum number of endpoints/suites that can be monitored concurrently\nDefaults to DefaultConcurrency. Set to 0 for unlimited concurrency."
         },
         "security": {
-          "$ref": "#/$defs/security_Config"
+          "$ref": "#/$defs/security_Config",
+          "description": "Security is the configuration for securing access to Gatus"
         },
         "alerting": {
-          "$ref": "#/$defs/alerting_Config"
+          "$ref": "#/$defs/alerting_Config",
+          "description": "Alerting is the configuration for alerting providers"
         },
         "endpoints": {
           "items": {
             "$ref": "#/$defs/config_endpoint_Endpoint"
           },
-          "type": "array"
+          "type": "array",
+          "description": "Endpoints is the list of endpoints to monitor"
         },
         "external-endpoints": {
           "items": {
             "$ref": "#/$defs/config_endpoint_ExternalEndpoint"
           },
-          "type": "array"
+          "type": "array",
+          "description": "ExternalEndpoints is the list of all external endpoints"
         },
         "suites": {
           "items": {
             "$ref": "#/$defs/config_suite_Suite"
           },
-          "type": "array"
+          "type": "array",
+          "description": "Suites is the list of suites to monitor"
         },
         "storage": {
-          "$ref": "#/$defs/storage_Config"
+          "$ref": "#/$defs/storage_Config",
+          "description": "Storage is the configuration for how the data is stored"
         },
         "web": {
-          "$ref": "#/$defs/config_web_Config"
+          "$ref": "#/$defs/config_web_Config",
+          "description": "Web is the web configuration for the application"
         },
         "ui": {
-          "$ref": "#/$defs/config_ui_Config"
+          "$ref": "#/$defs/config_ui_Config",
+          "description": "UI is the configuration for the UI"
         },
         "maintenance": {
-          "$ref": "#/$defs/config_maintenance_Config"
+          "$ref": "#/$defs/config_maintenance_Config",
+          "description": "Maintenance is the configuration for creating a maintenance window in which no alerts are sent"
         },
         "remote": {
-          "$ref": "#/$defs/config_remote_Config"
+          "$ref": "#/$defs/config_remote_Config",
+          "description": "Remote is the configuration for remote Gatus instances\nWARNING: This is in ALPHA and may change or be completely removed in the future"
         },
         "connectivity": {
-          "$ref": "#/$defs/config_connectivity_Config"
+          "$ref": "#/$defs/config_connectivity_Config",
+          "description": "Connectivity is the configuration for connectivity"
         },
         "tunneling": {
-          "$ref": "#/$defs/config_tunneling_Config"
+          "$ref": "#/$defs/config_tunneling_Config",
+          "description": "Tunneling is the configuration for SSH tunneling"
         },
         "announcements": {
           "items": {
             "$ref": "#/$defs/config_announcement_Announcement"
           },
-          "type": "array"
+          "type": "array",
+          "description": "Announcements is the list of system-wide announcements"
         }
       },
-      "additionalProperties": false,
-      "type": "object"
+      "type": "object",
+      "required": [
+        "endpoints"
+      ],
+      "description": "Config is the main configuration structure"
     },
     "alerting_Config": {
       "properties": {
         "aws-ses": {
-          "$ref": "#/$defs/alerting_provider_awsses_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_awsses_AlertProvider",
+          "description": "AWSSimpleEmailService is the configuration for the aws-ses alerting provider"
         },
         "custom": {
-          "$ref": "#/$defs/alerting_provider_custom_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_custom_AlertProvider",
+          "description": "Custom is the configuration for the custom alerting provider"
         },
         "datadog": {
-          "$ref": "#/$defs/alerting_provider_datadog_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_datadog_AlertProvider",
+          "description": "Datadog is the configuration for the datadog alerting provider"
         },
         "discord": {
-          "$ref": "#/$defs/alerting_provider_discord_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_discord_AlertProvider",
+          "description": "Discord is the configuration for the discord alerting provider"
         },
         "email": {
-          "$ref": "#/$defs/alerting_provider_email_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_email_AlertProvider",
+          "description": "Email is the configuration for the email alerting provider"
         },
         "github": {
-          "$ref": "#/$defs/alerting_provider_github_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_github_AlertProvider",
+          "description": "GitHub is the configuration for the github alerting provider"
         },
         "gitlab": {
-          "$ref": "#/$defs/alerting_provider_gitlab_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_gitlab_AlertProvider",
+          "description": "GitLab is the configuration for the gitlab alerting provider"
         },
         "gitea": {
-          "$ref": "#/$defs/alerting_provider_gitea_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_gitea_AlertProvider",
+          "description": "Gitea is the configuration for the gitea alerting provider"
         },
         "googlechat": {
-          "$ref": "#/$defs/alerting_provider_googlechat_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_googlechat_AlertProvider",
+          "description": "GoogleChat is the configuration for the googlechat alerting provider"
         },
         "gotify": {
-          "$ref": "#/$defs/alerting_provider_gotify_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_gotify_AlertProvider",
+          "description": "Gotify is the configuration for the gotify alerting provider"
         },
         "homeassistant": {
-          "$ref": "#/$defs/alerting_provider_homeassistant_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_homeassistant_AlertProvider",
+          "description": "HomeAssistant is the configuration for the homeassistant alerting provider"
         },
         "ifttt": {
-          "$ref": "#/$defs/alerting_provider_ifttt_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_ifttt_AlertProvider",
+          "description": "IFTTT is the configuration for the ifttt alerting provider"
         },
         "ilert": {
-          "$ref": "#/$defs/alerting_provider_ilert_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_ilert_AlertProvider",
+          "description": "Ilert is the configuration for the ilert alerting provider"
         },
         "incident-io": {
-          "$ref": "#/$defs/alerting_provider_incidentio_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_incidentio_AlertProvider",
+          "description": "IncidentIO is the configuration for the incident-io alerting provider"
         },
         "line": {
-          "$ref": "#/$defs/alerting_provider_line_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_line_AlertProvider",
+          "description": "Line is the configuration for the line alerting provider"
         },
         "matrix": {
-          "$ref": "#/$defs/alerting_provider_matrix_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_matrix_AlertProvider",
+          "description": "Matrix is the configuration for the matrix alerting provider"
         },
         "mattermost": {
-          "$ref": "#/$defs/alerting_provider_mattermost_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_mattermost_AlertProvider",
+          "description": "Mattermost is the configuration for the mattermost alerting provider"
         },
         "messagebird": {
-          "$ref": "#/$defs/alerting_provider_messagebird_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_messagebird_AlertProvider",
+          "description": "Messagebird is the configuration for the messagebird alerting provider"
         },
         "newrelic": {
-          "$ref": "#/$defs/alerting_provider_newrelic_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_newrelic_AlertProvider",
+          "description": "NewRelic is the configuration for the newrelic alerting provider"
         },
         "n8n": {
-          "$ref": "#/$defs/alerting_provider_n8n_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_n8n_AlertProvider",
+          "description": "N8N is the configuration for the n8n alerting provider"
         },
         "ntfy": {
-          "$ref": "#/$defs/alerting_provider_ntfy_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_ntfy_AlertProvider",
+          "description": "Ntfy is the configuration for the ntfy alerting provider"
         },
         "opsgenie": {
-          "$ref": "#/$defs/alerting_provider_opsgenie_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_opsgenie_AlertProvider",
+          "description": "Opsgenie is the configuration for the opsgenie alerting provider"
         },
         "pagerduty": {
-          "$ref": "#/$defs/alerting_provider_pagerduty_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_pagerduty_AlertProvider",
+          "description": "PagerDuty is the configuration for the pagerduty alerting provider"
         },
         "plivo": {
-          "$ref": "#/$defs/alerting_provider_plivo_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_plivo_AlertProvider",
+          "description": "Plivo is the configuration for the plivo alerting provider"
         },
         "pushover": {
-          "$ref": "#/$defs/alerting_provider_pushover_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_pushover_AlertProvider",
+          "description": "Pushover is the configuration for the pushover alerting provider"
         },
         "rocketchat": {
-          "$ref": "#/$defs/alerting_provider_rocketchat_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_rocketchat_AlertProvider",
+          "description": "RocketChat is the configuration for the rocketchat alerting provider"
         },
         "sendgrid": {
-          "$ref": "#/$defs/alerting_provider_sendgrid_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_sendgrid_AlertProvider",
+          "description": "SendGrid is the configuration for the sendgrid alerting provider"
         },
         "signal": {
-          "$ref": "#/$defs/alerting_provider_signal_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_signal_AlertProvider",
+          "description": "Signal is the configuration for the signal alerting provider"
         },
         "signl4": {
-          "$ref": "#/$defs/alerting_provider_signl4_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_signl4_AlertProvider",
+          "description": "SIGNL4 is the configuration for the signl4 alerting provider"
         },
         "slack": {
-          "$ref": "#/$defs/alerting_provider_slack_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_slack_AlertProvider",
+          "description": "Slack is the configuration for the slack alerting provider"
         },
         "splunk": {
-          "$ref": "#/$defs/alerting_provider_splunk_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_splunk_AlertProvider",
+          "description": "Splunk is the configuration for the splunk alerting provider"
         },
         "squadcast": {
-          "$ref": "#/$defs/alerting_provider_squadcast_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_squadcast_AlertProvider",
+          "description": "Squadcast is the configuration for the squadcast alerting provider"
         },
         "teams": {
-          "$ref": "#/$defs/alerting_provider_teams_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_teams_AlertProvider",
+          "description": "Teams is the configuration for the teams alerting provider"
         },
         "teams-workflows": {
-          "$ref": "#/$defs/alerting_provider_teamsworkflows_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_teamsworkflows_AlertProvider",
+          "description": "TeamsWorkflows is the configuration for the teams alerting provider using the new Workflow App Webhook Connector"
         },
         "telegram": {
-          "$ref": "#/$defs/alerting_provider_telegram_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_telegram_AlertProvider",
+          "description": "Telegram is the configuration for the telegram alerting provider"
         },
         "twilio": {
-          "$ref": "#/$defs/alerting_provider_twilio_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_twilio_AlertProvider",
+          "description": "Twilio is the configuration for the twilio alerting provider"
         },
         "vonage": {
-          "$ref": "#/$defs/alerting_provider_vonage_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_vonage_AlertProvider",
+          "description": "Vonage is the configuration for the vonage alerting provider"
         },
         "webex": {
-          "$ref": "#/$defs/alerting_provider_webex_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_webex_AlertProvider",
+          "description": "Webex is the configuration for the webex alerting provider"
         },
         "zapier": {
-          "$ref": "#/$defs/alerting_provider_zapier_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_zapier_AlertProvider",
+          "description": "Zapier is the configuration for the zapier alerting provider"
         },
         "zulip": {
-          "$ref": "#/$defs/alerting_provider_zulip_AlertProvider"
+          "$ref": "#/$defs/alerting_provider_zulip_AlertProvider",
+          "description": "Zulip is the configuration for the zulip alerting provider"
         }
       },
-      "additionalProperties": false,
-      "type": "object"
+      "type": "object",
+      "description": "Config is the configuration for alerting providers"
     },
     "alerting_alert_Alert": {
       "properties": {
@@ -228,12 +289,9 @@
           "type": "object"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "type",
-        "failure-threshold",
-        "success-threshold"
+        "type"
       ]
     },
     "alerting_provider_awsses_AlertProvider": {
@@ -263,11 +321,8 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "access-key-id",
-        "secret-access-key",
         "region",
         "from",
         "to"
@@ -294,12 +349,8 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
-        "access-key-id",
-        "secret-access-key",
         "region",
         "from",
         "to"
@@ -344,7 +395,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "url"
@@ -383,10 +433,8 @@
           "$ref": "#/$defs/client_Config"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "url"
       ]
     },
@@ -414,7 +462,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "api-key"
@@ -438,10 +485,8 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "api-key"
       ]
     },
@@ -466,7 +511,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "webhook-url"
@@ -487,10 +531,8 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "webhook-url"
       ]
     },
@@ -527,12 +569,9 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "from",
-        "username",
-        "password",
         "host",
         "port",
         "to"
@@ -565,13 +604,9 @@
           "$ref": "#/$defs/client_Config"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "from",
-        "username",
-        "password",
         "host",
         "port",
         "to"
@@ -598,7 +633,6 @@
           "$ref": "#/$defs/alerting_alert_Alert"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "repository-url",
@@ -617,7 +651,6 @@
           "$ref": "#/$defs/alerting_alert_Alert"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "repository-url",
@@ -648,7 +681,6 @@
           "$ref": "#/$defs/alerting_alert_Alert"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "webhook-url",
@@ -673,7 +705,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "webhook-url"
@@ -691,10 +722,8 @@
           "$ref": "#/$defs/client_Config"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "webhook-url"
       ]
     },
@@ -716,7 +745,6 @@
           "$ref": "#/$defs/alerting_alert_Alert"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "server-url",
@@ -741,7 +769,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "url",
@@ -760,10 +787,8 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "url",
         "token"
       ]
@@ -786,7 +811,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "webhook-key",
@@ -805,10 +829,8 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "webhook-key",
         "event-name"
       ]
@@ -828,11 +850,7 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
-      "type": "object",
-      "required": [
-        "integration-key"
-      ]
+      "type": "object"
     },
     "alerting_provider_ilert_Override": {
       "properties": {
@@ -843,12 +861,7 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
-      "type": "object",
-      "required": [
-        "group",
-        "integration-key"
-      ]
+      "type": "object"
     },
     "alerting_provider_incidentio_AlertProvider": {
       "properties": {
@@ -874,8 +887,11 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
-      "type": "object"
+      "type": "object",
+      "required": [
+        "url",
+        "auth-token"
+      ]
     },
     "alerting_provider_incidentio_Override": {
       "properties": {
@@ -895,10 +911,10 @@
           "type": "object"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group"
+        "url",
+        "auth-token"
       ]
     },
     "alerting_provider_line_AlertProvider": {
@@ -922,7 +938,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "channel-access-token",
@@ -944,10 +959,8 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "channel-access-token",
         "user-ids"
       ]
@@ -973,10 +986,8 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "server-url",
         "access-token",
         "internal-room-id"
       ]
@@ -996,11 +1007,8 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
-        "server-url",
         "access-token",
         "internal-room-id"
       ]
@@ -1026,7 +1034,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "webhook-url"
@@ -1047,10 +1054,8 @@
           "$ref": "#/$defs/client_Config"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "webhook-url"
       ]
     },
@@ -1069,7 +1074,6 @@
           "$ref": "#/$defs/alerting_alert_Alert"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "access-key",
@@ -1095,7 +1099,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "webhook-url"
@@ -1113,10 +1116,8 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "webhook-url"
       ]
     },
@@ -1141,7 +1142,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "insert-key",
@@ -1163,10 +1163,8 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "insert-key",
         "account-id"
       ]
@@ -1207,7 +1205,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "topic"
@@ -1243,10 +1240,8 @@
           "type": "boolean"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "topic"
       ]
     },
@@ -1277,15 +1272,9 @@
           "$ref": "#/$defs/alerting_alert_Alert"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "api-key",
-        "priority",
-        "source",
-        "entity-prefix",
-        "alias-prefix",
-        "tags"
+        "api-key"
       ]
     },
     "alerting_provider_pagerduty_AlertProvider": {
@@ -1303,11 +1292,7 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
-      "type": "object",
-      "required": [
-        "integration-key"
-      ]
+      "type": "object"
     },
     "alerting_provider_pagerduty_Override": {
       "properties": {
@@ -1318,12 +1303,7 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
-      "type": "object",
-      "required": [
-        "group",
-        "integration-key"
-      ]
+      "type": "object"
     },
     "alerting_provider_plivo_AlertProvider": {
       "properties": {
@@ -1352,7 +1332,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "auth-id",
@@ -1382,10 +1361,8 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "auth-id",
         "auth-token",
         "from",
@@ -1422,12 +1399,7 @@
           "$ref": "#/$defs/alerting_alert_Alert"
         }
       },
-      "additionalProperties": false,
-      "type": "object",
-      "required": [
-        "application-token",
-        "user-key"
-      ]
+      "type": "object"
     },
     "alerting_provider_rocketchat_AlertProvider": {
       "properties": {
@@ -1447,7 +1419,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "webhook-url"
@@ -1465,10 +1436,8 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "webhook-url"
       ]
     },
@@ -1496,7 +1465,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "api-key",
@@ -1522,10 +1490,8 @@
           "$ref": "#/$defs/client_Config"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "api-key",
         "from",
         "to"
@@ -1555,7 +1521,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "api-url",
@@ -1581,10 +1546,8 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "api-url",
         "number",
         "recipients"
@@ -1605,7 +1568,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "team-secret"
@@ -1620,10 +1582,8 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "team-secret"
       ]
     },
@@ -1645,7 +1605,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "webhook-url"
@@ -1663,10 +1622,8 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "webhook-url"
       ]
     },
@@ -1697,7 +1654,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "hec-url",
@@ -1725,10 +1681,8 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "hec-url",
         "hec-token"
       ]
@@ -1748,7 +1702,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "webhook-url"
@@ -1763,10 +1716,8 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "webhook-url"
       ]
     },
@@ -1791,7 +1742,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "webhook-url"
@@ -1812,10 +1762,8 @@
           "$ref": "#/$defs/client_Config"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "webhook-url"
       ]
     },
@@ -1837,7 +1785,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "webhook-url"
@@ -1855,10 +1802,8 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "webhook-url"
       ]
     },
@@ -1889,12 +1834,10 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "token",
-        "id",
-        "api-url"
+        "id"
       ]
     },
     "alerting_provider_telegram_Override": {
@@ -1918,13 +1861,10 @@
           "$ref": "#/$defs/client_Config"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "token",
-        "id",
-        "api-url"
+        "id"
       ]
     },
     "alerting_provider_twilio_AlertProvider": {
@@ -1951,7 +1891,6 @@
           "$ref": "#/$defs/alerting_alert_Alert"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "sid",
@@ -1987,7 +1926,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "api-key",
@@ -2017,10 +1955,8 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "api-key",
         "api-secret",
         "from",
@@ -2042,7 +1978,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "webhook-url"
@@ -2057,10 +1992,8 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "webhook-url"
       ]
     },
@@ -2079,7 +2012,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "webhook-url"
@@ -2094,10 +2026,8 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "webhook-url"
       ]
     },
@@ -2125,7 +2055,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "bot-email",
@@ -2152,10 +2081,8 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "group",
         "bot-email",
         "bot-api-key",
         "domain",
@@ -2165,59 +2092,64 @@
     "client_Config": {
       "properties": {
         "proxy-url": {
-          "type": "string"
+          "type": "string",
+          "description": "ProxyURL is the URL of the proxy to use for the client"
         },
         "insecure": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Insecure determines whether to skip verifying the server's certificate chain and host name"
         },
         "ignore-redirect": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "IgnoreRedirect determines whether to ignore redirects (true) or follow them (false, default)"
         },
         "timeout": {
-          "type": "string"
+          "type": "string",
+          "description": "Timeout for the client"
         },
         "dns-resolver": {
-          "type": "string"
+          "type": "string",
+          "description": "DNSResolver override for the HTTP client\nExpected format is {protocol}://{host}:{port}, e.g. tcp://8.8.8.8:53"
         },
         "oauth2": {
-          "$ref": "#/$defs/client_OAuth2Config"
+          "$ref": "#/$defs/client_OAuth2Config",
+          "description": "OAuth2Config is the OAuth2 configuration used for the client.\n\nIf non-nil, the http.Client returned by getHTTPClient will automatically retrieve a token if necessary.\nSee configureOAuth2 for more details."
         },
         "identity-aware-proxy": {
-          "$ref": "#/$defs/client_IAPConfig"
+          "$ref": "#/$defs/client_IAPConfig",
+          "description": "IAPConfig is the Google Cloud Identity-Aware-Proxy configuration used for the client. (e.g. audience)"
         },
         "network": {
-          "type": "string"
+          "type": "string",
+          "description": "Network (ip, ip4 or ip6) for the ICMP client"
         },
         "tls": {
-          "$ref": "#/$defs/client_TLSConfig"
+          "$ref": "#/$defs/client_TLSConfig",
+          "description": "TLS configuration (optional)"
         },
         "tunnel": {
-          "type": "string"
+          "type": "string",
+          "description": "Tunnel is the name of the SSH tunnel to use for the client"
         }
       },
-      "additionalProperties": false,
       "type": "object",
-      "required": [
-        "timeout",
-        "network"
-      ]
+      "description": "Config is the configuration for clients"
     },
     "client_IAPConfig": {
       "properties": {
         "audience": {
-          "type": "string"
+          "type": "string",
+          "description": "e.g. \"toto.apps.googleusercontent.com\""
         }
       },
-      "additionalProperties": false,
       "type": "object",
-      "required": [
-        "audience"
-      ]
+      "description": "IAPConfig is the configuration for the Google Cloud Identity-Aware-Proxy"
     },
     "client_OAuth2Config": {
       "properties": {
         "token-url": {
-          "type": "string"
+          "type": "string",
+          "description": "e.g. https://dev-12345678.okta.com/token"
         },
         "client-id": {
           "type": "string"
@@ -2229,32 +2161,29 @@
           "items": {
             "type": "string"
           },
-          "type": "array"
+          "type": "array",
+          "description": "e.g. [\"openid\"]"
         }
       },
-      "additionalProperties": false,
       "type": "object",
-      "required": [
-        "token-url",
-        "client-id",
-        "client-secret",
-        "scopes"
-      ]
+      "description": "OAuth2Config is the configuration for the OAuth2 client credentials flow"
     },
     "client_TLSConfig": {
       "properties": {
         "certificate-file": {
-          "type": "string"
+          "type": "string",
+          "description": "CertificateFile is the public certificate for TLS in PEM format."
         },
         "private-key-file": {
-          "type": "string"
+          "type": "string",
+          "description": "PrivateKeyFile is the private key file for TLS in PEM format."
         },
         "renegotiation": {
           "type": "string"
         }
       },
-      "additionalProperties": false,
-      "type": "object"
+      "type": "object",
+      "description": "TLSConfig is the configuration for mTLS configurations"
     },
     "config_announcement_Announcement": {
       "properties": {
@@ -2272,11 +2201,9 @@
           "type": "boolean"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "timestamp",
-        "type",
         "message"
       ]
     },
@@ -2289,7 +2216,6 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "target"
@@ -2301,8 +2227,10 @@
           "$ref": "#/$defs/config_connectivity_Checker"
         }
       },
-      "additionalProperties": false,
-      "type": "object"
+      "type": "object",
+      "required": [
+        "checker"
+      ]
     },
     "config_endpoint_Endpoint": {
       "properties": {
@@ -2382,12 +2310,10 @@
           "type": "boolean"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "name",
-        "url",
-        "conditions"
+        "url"
       ]
     },
     "config_endpoint_ExternalEndpoint": {
@@ -2420,10 +2346,10 @@
           "$ref": "#/$defs/config_endpoint_heartbeat_Config"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "name"
+        "name",
+        "token"
       ]
     },
     "config_endpoint_dns_Config": {
@@ -2435,12 +2361,7 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
-      "type": "object",
-      "required": [
-        "query-type",
-        "query-name"
-      ]
+      "type": "object"
     },
     "config_endpoint_heartbeat_Config": {
       "properties": {
@@ -2448,11 +2369,7 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
-      "type": "object",
-      "required": [
-        "interval"
-      ]
+      "type": "object"
     },
     "config_endpoint_ssh_Config": {
       "properties": {
@@ -2463,8 +2380,11 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
-      "type": "object"
+      "type": "object",
+      "required": [
+        "username",
+        "password"
+      ]
     },
     "config_endpoint_ui_Badge": {
       "properties": {
@@ -2472,11 +2392,7 @@
           "$ref": "#/$defs/config_endpoint_ui_ResponseTime"
         }
       },
-      "additionalProperties": false,
-      "type": "object",
-      "required": [
-        "response-time"
-      ]
+      "type": "object"
     },
     "config_endpoint_ui_Config": {
       "properties": {
@@ -2502,17 +2418,7 @@
           "$ref": "#/$defs/config_endpoint_ui_Badge"
         }
       },
-      "additionalProperties": false,
-      "type": "object",
-      "required": [
-        "hide-conditions",
-        "hide-hostname",
-        "hide-url",
-        "hide-port",
-        "hide-errors",
-        "dont-resolve-failed-conditions",
-        "badge"
-      ]
+      "type": "object"
     },
     "config_endpoint_ui_ResponseTime": {
       "properties": {
@@ -2523,11 +2429,7 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
-      "type": "object",
-      "required": [
-        "thresholds"
-      ]
+      "type": "object"
     },
     "config_maintenance_Config": {
       "properties": {
@@ -2550,10 +2452,10 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "enabled"
+        "start",
+        "duration"
       ]
     },
     "config_remote_Config": {
@@ -2568,8 +2470,10 @@
           "$ref": "#/$defs/client_Config"
         }
       },
-      "additionalProperties": false,
-      "type": "object"
+      "type": "object",
+      "required": [
+        "instances"
+      ]
     },
     "config_remote_Instance": {
       "properties": {
@@ -2580,10 +2484,8 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
-        "endpoint-prefix",
         "url"
       ]
     },
@@ -2614,7 +2516,6 @@
           "type": "array"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "name",
@@ -2623,7 +2524,6 @@
     },
     "config_tunneling_Config": {
       "properties": {},
-      "additionalProperties": false,
       "type": "object"
     },
     "config_ui_Button": {
@@ -2635,8 +2535,11 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
-      "type": "object"
+      "type": "object",
+      "required": [
+        "name",
+        "link"
+      ]
     },
     "config_ui_Config": {
       "properties": {
@@ -2674,7 +2577,6 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
       "type": "object"
     },
     "config_web_Config": {
@@ -2692,12 +2594,7 @@
           "$ref": "#/$defs/config_web_TLSConfig"
         }
       },
-      "additionalProperties": false,
-      "type": "object",
-      "required": [
-        "address",
-        "port"
-      ]
+      "type": "object"
     },
     "config_web_TLSConfig": {
       "properties": {
@@ -2708,24 +2605,25 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
       "type": "object"
     },
     "security_BasicConfig": {
       "properties": {
         "username": {
-          "type": "string"
+          "type": "string",
+          "description": "Username is the name which will need to be used for a successful authentication"
         },
         "password-bcrypt-base64": {
-          "type": "string"
+          "type": "string",
+          "description": "PasswordBcryptHashBase64Encoded is the base64 encoded string of the Bcrypt hash of the password to use to\nauthenticate using basic auth."
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "username",
         "password-bcrypt-base64"
-      ]
+      ],
+      "description": "BasicConfig is the configuration for Basic authentication"
     },
     "security_Config": {
       "properties": {
@@ -2736,16 +2634,18 @@
           "$ref": "#/$defs/security_OIDCConfig"
         }
       },
-      "additionalProperties": false,
-      "type": "object"
+      "type": "object",
+      "description": "Config is the security configuration for Gatus"
     },
     "security_OIDCConfig": {
       "properties": {
         "issuer-url": {
-          "type": "string"
+          "type": "string",
+          "description": "e.g. https://dev-12345678.okta.com"
         },
         "redirect-url": {
-          "type": "string"
+          "type": "string",
+          "description": "e.g. http://localhost:8080/authorization-code/callback"
         },
         "client-id": {
           "type": "string"
@@ -2757,54 +2657,56 @@
           "items": {
             "type": "string"
           },
-          "type": "array"
+          "type": "array",
+          "description": "e.g. [\"openid\"]"
         },
         "allowed-subjects": {
           "items": {
             "type": "string"
           },
-          "type": "array"
+          "type": "array",
+          "description": "e.g. [\"user1@example.com\"]. If empty, all subjects are allowed"
         },
         "session-ttl": {
-          "type": "string"
+          "type": "string",
+          "description": "e.g. 8h. Defaults to 8 hours"
         }
       },
-      "additionalProperties": false,
       "type": "object",
       "required": [
         "issuer-url",
         "redirect-url",
         "client-id",
         "client-secret",
-        "scopes",
-        "allowed-subjects",
-        "session-ttl"
-      ]
+        "scopes"
+      ],
+      "description": "OIDCConfig is the configuration for OIDC authentication"
     },
     "storage_Config": {
       "properties": {
         "path": {
-          "type": "string"
+          "type": "string",
+          "description": "Path is the path used by the store to achieve persistence\nIf blank, persistence is disabled.\nNote that not all Type support persistence"
         },
         "type": {
-          "type": "string"
+          "type": "string",
+          "description": "Type of store\nIf blank, uses the default in-memory store"
         },
         "caching": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Caching is whether to enable caching.\nThis is used to drastically decrease read latency by pre-emptively caching writes\nas they happen, also known as the write-through caching strategy.\nDoes not apply if Config.Type is not TypePostgres or TypeSQLite."
         },
         "maximum-number-of-results": {
-          "type": "integer"
+          "type": "integer",
+          "description": "MaximumNumberOfResults is the number of results each endpoint should be able to provide"
         },
         "maximum-number-of-events": {
-          "type": "integer"
+          "type": "integer",
+          "description": "MaximumNumberOfEvents is the number of events each endpoint should be able to provide"
         }
       },
-      "additionalProperties": false,
       "type": "object",
-      "required": [
-        "path",
-        "type"
-      ]
+      "description": "Config is the configuration for storage"
     }
   }
 }

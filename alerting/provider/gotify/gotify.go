@@ -22,10 +22,10 @@ var (
 )
 
 type Config struct {
-	ServerURL string `yaml:"server-url"`         // URL of the Gotify server
-	Token     string `yaml:"token"`              // Token to use when sending a message to the Gotify server
-	Priority  int    `yaml:"priority,omitempty"` // Priority of the message. Defaults to DefaultPriority.
-	Title     string `yaml:"title,omitempty"`    // Title of the message that will be sent
+	ServerURL string `yaml:"server-url" jsonschema:"required"` // URL of the Gotify server
+	Token     string `yaml:"token" jsonschema:"required"`      // Token to use when sending a message to the Gotify server
+	Priority  int    `yaml:"priority,omitempty"`               // Priority of the message. Defaults to DefaultPriority.
+	Title     string `yaml:"title,omitempty"`                  // Title of the message that will be sent
 }
 
 func (cfg *Config) Validate() error {

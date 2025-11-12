@@ -31,10 +31,10 @@ var (
 //
 // Uses UTC by default.
 type Config struct {
-	Enabled  *bool         `yaml:"enabled"`            // Whether the maintenance period is enabled. Enabled by default if nil.
-	Start    string        `yaml:"start,omitempty"`    // Time at which the maintenance period starts (e.g. 23:00)
-	Duration time.Duration `yaml:"duration,omitempty"` // Duration of the maintenance period (e.g. 4h)
-	Timezone string        `yaml:"timezone,omitempty"` // Timezone in string format which the maintenance period is configured (e.g. America/Sao_Paulo)
+	Enabled  *bool         `yaml:"enabled"`                                  // Whether the maintenance period is enabled. Enabled by default if nil.
+	Start    string        `yaml:"start,omitempty" jsonschema:"required"`    // Time at which the maintenance period starts (e.g. 23:00)
+	Duration time.Duration `yaml:"duration,omitempty" jsonschema:"required"` // Duration of the maintenance period (e.g. 4h)
+	Timezone string        `yaml:"timezone,omitempty"`                       // Timezone in string format which the maintenance period is configured (e.g. America/Sao_Paulo)
 
 	// Every is a list of days of the week during which maintenance period applies.
 	// See longDayNames for list of valid values.

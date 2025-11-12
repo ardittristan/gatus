@@ -56,8 +56,8 @@ func (cfg *Config) IsDarkMode() bool {
 
 // Button is the configuration for a button on the UI
 type Button struct {
-	Name string `yaml:"name,omitempty"` // Name is the text to display on the button
-	Link string `yaml:"link,omitempty"` // Link to open when the button is clicked.
+	Name string `yaml:"name,omitempty" jsonschema:"required"` // Name is the text to display on the button
+	Link string `yaml:"link,omitempty" jsonschema:"required"` // Link to open when the button is clicked.
 }
 
 // Validate validates the button configuration
