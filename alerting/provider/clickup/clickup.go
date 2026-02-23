@@ -31,8 +31,8 @@ var priorityMap = map[string]int{
 
 type Config struct {
 	APIURL          string   `yaml:"api-url"`
-	ListID          string   `yaml:"list-id"`
-	Token           string   `yaml:"token"`
+	ListID          string   `yaml:"list-id" jsonschema:"required"`
+	Token           string   `yaml:"token" jsonschema:"required"`
 	Assignees       []string `yaml:"assignees"`
 	Status          string   `yaml:"status"`
 	Priority        string   `yaml:"priority"`

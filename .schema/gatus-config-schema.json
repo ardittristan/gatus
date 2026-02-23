@@ -102,6 +102,10 @@
           "$ref": "#/$defs/alerting_provider_awsses_AlertProvider",
           "description": "AWSSimpleEmailService is the configuration for the aws-ses alerting provider"
         },
+        "clickup": {
+          "$ref": "#/$defs/alerting_provider_clickup_AlertProvider",
+          "description": "ClickUp is the configuration for the clickup alerting provider"
+        },
         "custom": {
           "$ref": "#/$defs/alerting_provider_custom_AlertProvider",
           "description": "Custom is the configuration for the custom alerting provider"
@@ -354,6 +358,96 @@
         "region",
         "from",
         "to"
+      ]
+    },
+    "alerting_provider_clickup_AlertProvider": {
+      "properties": {
+        "api-url": {
+          "type": "string"
+        },
+        "list-id": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "assignees": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "status": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string"
+        },
+        "notify-all": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "default-alert": {
+          "$ref": "#/$defs/alerting_alert_Alert"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/alerting_provider_clickup_Override"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object",
+      "required": [
+        "list-id",
+        "token"
+      ]
+    },
+    "alerting_provider_clickup_Override": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "api-url": {
+          "type": "string"
+        },
+        "list-id": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "assignees": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "status": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string"
+        },
+        "notify-all": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        }
+      },
+      "type": "object",
+      "required": [
+        "list-id",
+        "token"
       ]
     },
     "alerting_provider_custom_AlertProvider": {
@@ -2378,12 +2472,14 @@
         },
         "password": {
           "type": "string"
+        },
+        "private-key": {
+          "type": "string"
         }
       },
       "type": "object",
       "required": [
-        "username",
-        "password"
+        "username"
       ]
     },
     "config_endpoint_ui_Badge": {
@@ -2412,6 +2508,9 @@
           "type": "boolean"
         },
         "dont-resolve-failed-conditions": {
+          "type": "boolean"
+        },
+        "resolve-successful-conditions": {
           "type": "boolean"
         },
         "badge": {
@@ -2549,6 +2648,12 @@
         "description": {
           "type": "string"
         },
+        "dashboard-heading": {
+          "type": "string"
+        },
+        "dashboard-subheading": {
+          "type": "string"
+        },
         "header": {
           "type": "string"
         },
@@ -2557,6 +2662,9 @@
         },
         "link": {
           "type": "string"
+        },
+        "favicon": {
+          "$ref": "#/$defs/config_ui_Favicon"
         },
         "buttons": {
           "items": {
@@ -2574,6 +2682,20 @@
           "type": "string"
         },
         "default-filter-by": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "config_ui_Favicon": {
+      "properties": {
+        "default": {
+          "type": "string"
+        },
+        "size16x16": {
+          "type": "string"
+        },
+        "size32x32": {
           "type": "string"
         }
       },
